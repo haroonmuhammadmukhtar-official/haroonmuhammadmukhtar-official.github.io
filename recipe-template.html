@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}} — Daily Platter</title>
+<meta name="description" content="{{TITLE}} — a quick, family-friendly recipe from Daily Platter.">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:image" content="{{IMAGE_URL}}">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="logo">Daily<span>Platter</span></a>
+    <nav class="nav-cats">
+      <a href="/">Home</a>
+      <a href="/#recipe-grid">All recipes</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container recipe-body">
+  <div class="recipe-header" style="margin-top:32px;">
+    <span class="cat">{{CATEGORY}}</span>
+    <h1>{{TITLE}}</h1>
+    <div class="meta" style="font-family:var(--font-mono);font-size:13px;color:#6b5f4e;display:flex;gap:16px;">
+      <span>{{TIME}}</span><span>&middot;</span><span>{{SERVINGS}}</span>
+    </div>
+  </div>
+
+  <div class="recipe-hero">
+    <img src="{{IMAGE_URL}}" alt="{{TITLE}}">
+    <span class="save-btn" style="opacity:1;position:absolute;top:14px;right:14px;"
+      onclick="window.open('https://www.pinterest.com/pin/create/button/?url='+encodeURIComponent(window.location.href)+'&media='+encodeURIComponent('{{IMAGE_URL}}')+'&description='+encodeURIComponent('{{TITLE}}'), '_blank', 'noopener,width=750,height=550');">
+      Save to Pinterest
+    </span>
+  </div>
+
+  <div class="ad-slot">Ad slot — paste your Adsterra code here</div>
+
+  {{CONTENT_HTML}}
+
+  <div class="ad-slot">Ad slot — paste your Adsterra code here</div>
+
+  <div class="related-strip">
+    <div class="section-title" style="margin-top:0;">More recipes to try</div>
+    <div class="grid" id="recipe-grid"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container cols">
+    <span>&copy; <span id="year"></span> Daily Platter</span>
+    <a href="https://www.pinterest.com/haroonmukhtar000/daily-recipes/" target="_blank" rel="noopener">Follow on Pinterest</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
