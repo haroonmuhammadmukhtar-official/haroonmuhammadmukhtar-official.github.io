@@ -1,0 +1,288 @@
+/* ==========================================================================
+   Daily Platter — Design System
+   Palette: farmhouse kitchen, not the generic AI cream+terracotta combo.
+   ========================================================================== */
+
+:root {
+  --cream:      #FBF7EF; /* background */
+  --ink:        #221B14; /* primary text */
+  --basil:      #2F4A3C; /* primary accent — headers, nav, buttons */
+  --basil-dark: #1D2F26;
+  --gold:       #E4A951; /* secondary accent — badges, hovers */
+  --rose:       #C97064; /* tertiary accent — save button, tags */
+  --card:       #FFFFFF;
+  --line:       #E7DFCF;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(34, 27, 20, 0.08);
+  --shadow-lg: 0 12px 32px rgba(34, 27, 20, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--basil);
+  letter-spacing: -0.02em;
+}
+
+.logo span { color: var(--rose); }
+
+.nav-cats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-cats a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  color: var(--basil);
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.nav-cats a:hover { background: var(--basil); color: var(--cream); transform: translateY(-1px); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--rose);
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  margin: 0 0 18px;
+  max-width: 14ch;
+  color: var(--ink);
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 46ch;
+  color: #4a4034;
+}
+
+/* ---------- Recipe grid ---------- */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  margin: 56px 0 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.section-title .tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gold);
+  border: 1px dashed var(--gold);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-bottom: 64px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0 36px; }
+}
+
+/* Recipe card — the "index card" signature motif */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.card .thumb-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.card .thumb-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.card:hover .thumb-wrap img { transform: scale(1.06); }
+
+/* Pinterest-style Save button — appears on hover (desktop) / always visible (mobile) */
+.save-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--rose);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 100px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.card:hover .save-btn { opacity: 1; transform: translateY(0); }
+@media (max-width: 620px) { .save-btn { opacity: 1; transform: none; } }
+
+.card .body { padding: 18px 18px 20px; }
+
+.card .cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.25;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+
+.card .meta {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #6b5f4e;
+}
+
+/* ---------- Ad slots ---------- */
+.ad-slot {
+  margin: 40px 0;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #a99a80;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Recipe single page ---------- */
+.recipe-hero {
+  aspect-ratio: 16/10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 28px 0;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.recipe-hero img { width: 100%; height: 100%; object-fit: cover; }
+
+.recipe-header .cat { color: var(--gold); font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.recipe-header h1 { font-family: var(--font-display); font-size: clamp(30px, 5vw, 48px); margin: 10px 0 16px; max-width: 20ch; }
+
+.recipe-body { max-width: 720px; margin: 0 auto; padding: 0 0 80px; }
+.recipe-body h2 { font-family: var(--font-display); font-size: 26px; margin-top: 44px; color: var(--basil); }
+.recipe-body ul, .recipe-body ol { padding-left: 22px; }
+.recipe-body li { margin-bottom: 8px; }
+.recipe-body p { font-size: 17px; color: #35291d; }
+
+.related-strip {
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+  margin-top: 56px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--basil-dark);
+  color: #E9E2D3;
+  padding: 48px 0;
+  margin-top: 64px;
+}
+.site-footer a { opacity: 0.85; }
+.site-footer a:hover { opacity: 1; }
+.site-footer .cols { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; font-size: 14px; }
