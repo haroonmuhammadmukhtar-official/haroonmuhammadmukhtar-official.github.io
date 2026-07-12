@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Platter — Easy Recipes for Real Weeknights</title>
+<meta name="description" content="Quick, family-friendly recipes for busy weeknights. New recipes added regularly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="logo">Daily<span>Platter</span></a>
+    <nav class="nav-cats">
+      <a href="#" data-filter="all">All</a>
+      <a href="#" data-filter="Dinner">Dinner</a>
+      <a href="#" data-filter="Breakfast">Breakfast</a>
+      <a href="#" data-filter="Quick Meals">Quick Meals</a>
+      <a href="#" data-filter="Family Favorites">Family Favorites</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Updated with new recipes regularly</div>
+    <h1>Real dinners for real weeknights.</h1>
+    <p>No 40-step recipes, no mystery ingredients. Just fast, family-approved meals you can actually get on the table tonight.</p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="section-title">Latest recipes <span class="tag">fresh off the stove</span></div>
+  <div class="ad-slot">Ad slot — paste your Adsterra code here</div>
+  <div class="grid" id="recipe-grid">
+    <p>Loading recipes…</p>
+  </div>
+  <div class="ad-slot">Ad slot — paste your Adsterra code here</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container cols">
+    <span>&copy; <span id="year"></span> Daily Platter</span>
+    <a href="https://www.pinterest.com/haroonmukhtar000/daily-recipes/" target="_blank" rel="noopener">Follow on Pinterest</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
